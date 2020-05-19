@@ -4,7 +4,7 @@ class RrbsSettingsController < ApplicationController
   before_action :find_user, :find_project, :authorize
 
   def initialize
-    super()    #redmine‚Ìˆê”Ê•”(bodyˆÈŠO)‚ðŒp³
+    super()    #redmineï¿½Ìˆï¿½Ê•ï¿½(bodyï¿½ÈŠO)ï¿½ï¿½ï¿½pï¿½ï¿½
   end
 
   
@@ -40,6 +40,6 @@ class RrbsSettingsController < ApplicationController
   end
   
   def rrbs_setting_params
-    params.require(:settings).permit('tracker_id', 'custom_field_id_room', 'custom_field_id_start', 'custom_field_id_end', 'issue_status_id_book', 'issue_status_id_progress', 'issue_status_id_complete', 'footer_message')
+    params.require(:settings).permit('tracker_id', 'custom_field_id_room', 'custom_field_id_start', 'custom_field_id_end', 'custom_field_id_text', 'issue_status_id_book', 'issue_status_id_progress', 'issue_status_id_complete', 'issue_status_id_cancel','footer_message')
   end
 end

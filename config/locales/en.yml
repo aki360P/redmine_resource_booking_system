@@ -6,11 +6,12 @@ en:
   label_rrbs_setting_custom_field_id_room: "Resource"
   label_rrbs_setting_custom_field_id_start: "Start time"
   label_rrbs_setting_custom_field_id_end: "End time"
+  label_rrbs_setting_custom_field_id_text: "Text field"
   label_rrbs_issue_status_id_book: "Status for booking"
   label_rrbs_issue_status_id_progress: "Status for progress"
   label_rrbs_issue_status_id_complete: "Status for complete"
+  label_rrbs_issue_status_id_cancel: "Status for cancel (not displayed)"
   label_rrbs_footer_message: "Footer message"
-  
   
   
   
@@ -25,7 +26,7 @@ en:
   label_rrbs_set_status: "Status"
   label_rrbs_save: "Save"
   label_rrbs_delete: "Delete"
-  
+
   label_rrbs_update_event: "Update booking"
   label_rrbs_create_event: "Create booking"
   

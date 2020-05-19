@@ -75,10 +75,6 @@ br
   color: #000000;
 }
 
-.fc-event .fc-bg
-{
-    
-}
 
 
 /************************************************************************************************************
@@ -92,7 +88,7 @@ add the following for every category (<cid>=category id) where you want a differ
 
 .fc-time-grid-event.category_1 .fc-time 
 {
-    background-color: #EA1D22;
+    background-color: lightsteelblue;
 }
 .fc-time-grid-event.category_2 .fc-time
 {
@@ -126,11 +122,11 @@ div#content {
   
 div#calendar {
   float: right;
-  width: 80%;  /* ‡Œv100%‚É‚·‚é‚Æ‚È‚º‚©ã‰º‚É•ª‚©‚ê‚Ä‚µ‚Ü‚¤ */
+  width: 80%;  /* ï¿½ï¿½ï¿½v100%ï¿½É‚ï¿½ï¿½ï¿½Æ‚È‚ï¿½ï¿½ï¿½ï¿½ã‰ºï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ */
   padding-top: 0px; 
   padding-left: 0px;
   padding-right: auto;
-  margin-bottom: 0px; /* calendar‚ÌƒTƒCƒY‚È‚º‚©‘å‚«‚¢ */
+  margin-bottom: 0px; /* calendarï¿½ÌƒTï¿½Cï¿½Yï¿½È‚ï¿½ï¿½ï¿½ï¿½å‚«ï¿½ï¿½ */
 }
 
 

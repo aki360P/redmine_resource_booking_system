@@ -19,9 +19,11 @@ class RrbsSetting < ActiveRecord::Base
       rrbs_setting.attributes = { custom_field_id_room: '1' }
       rrbs_setting.attributes = { custom_field_id_start: '2' }
       rrbs_setting.attributes = { custom_field_id_end: '3' }
+      rrbs_setting.attributes = { custom_field_id_text: '4' }
       rrbs_setting.attributes = { issue_status_id_book: '1' }
       rrbs_setting.attributes = { issue_status_id_progress: '2' }
       rrbs_setting.attributes = { issue_status_id_complete: '3' }
+      rrbs_setting.attributes = { issue_status_id_cancel: '4' }
       rrbs_setting.attributes = { footer_message: '' }
             
       rrbs_setting.save!

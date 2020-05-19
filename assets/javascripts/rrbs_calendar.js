@@ -57,7 +57,9 @@ jQuery(document).ready(function($) {
                   if (event[i].custom_fields[j]["id"] == fieldIdStart)
                       eventIndexStart = j;
                   if (event[i].custom_fields[j]["id"] == fieldIdEnd)
-                      eventIndexEnd = j;
+					  eventIndexEnd = j;
+				  if (event[i].custom_fields[j]["id"] == fieldIdText)
+                      eventIndexText = j;
               }
               
               var resource_id;
@@ -78,19 +80,23 @@ jQuery(document).ready(function($) {
               if (event[i].status.id == issue_status_id_book) { event_color = '#227c27' ; }  //green
               if (event[i].status.id == issue_status_id_progress) { event_color = '#ffd43a' ; }  //yellow
               if (event[i].status.id == issue_status_id_complete) { event_color = '#636363' ; }  //grey
-              
-              eventsJSON["events"].push({
-              			title: event[i].subject,
-						resource_id: resource_id,
-						resource: resource,
-						start: start,
-						end: end,
-						assigned_to: event[i].assigned_to.name,
-						assigned_to_id: event[i].assigned_to.id,
-						id: event[i].id,
-						color: event_color,
-						status_id: event[i].status.id
-              });
+			  
+			  
+			  if (event[i].status.id != issue_status_id_cancel) {   //not displayed
+				eventsJSON["events"].push({
+							title: event[i].subject,
+							resource_id: resource_id,
+							resource: resource,
+							start: start,
+							end: end,
+							assigned_to: event[i].assigned_to.name,
+							assigned_to_id: event[i].assigned_to.id,
+							id: event[i].id,
+							booking_text: event[i].custom_fields[eventIndexText].value,
+							color: event_color,
+							status_id: event[i].status.id
+				});
+			  }
           }
           return true;
       };
@@ -208,7 +214,8 @@ jQuery(document).ready(function($) {
           var ajaxData_custom_field_values = {};
               ajaxData_custom_field_values[fieldIdStart] = start_time.format('HH:mm');
               ajaxData_custom_field_values[fieldIdEnd] = end_time.format('HH:mm');
-              ajaxData_custom_field_values[fieldIdResource] = $('#selected_resource').val();
+			  ajaxData_custom_field_values[fieldIdResource] = $('#selected_resource').val();
+			  ajaxData_custom_field_values[fieldIdText] = $('#booking_text').val();
               
           
           $('.rrbs_saveModal').dialog('close');
@@ -393,7 +400,8 @@ jQuery(document).ready(function($) {
 							 + label_rrbs_assigned_to  + ': ' + data.assigned_to + '</br>' 
 							 + label_rrbs_start_time   + ': ' + data.start.toISOString() + '</br>' 
 							 + label_rrbs_end_time     + ': ' + data.end.toISOString() + '</br>'
-							 + label_rrbs_issueid      + ': ' + data.id + '</br>'  
+							 + label_rrbs_issueid      + ': ' + data.id + '</br>'
+							 + label_rrbs_booking_text + ': ' + data.booking_text + '</br>' 
 							 + '</div>';
 				$("body").append(tooltip);
 				$(this).mouseover(function (e) {
@@ -444,7 +452,8 @@ jQuery(document).ready(function($) {
                   $('#event_id').val(calEvent.id);
                   $('#start_time').val(calEvent.start.format('HH:mm'));
                   $('#end_time').val(calEvent.end.format('HH:mm'));
-                  $('#selected_assigned_to').val(calEvent.assigned_to_id);
+				  $('#selected_assigned_to').val(calEvent.assigned_to_id);
+				  $('#booking_text').val(calEvent.booking_text);
 
 					$('#selected_issue_status').val(calEvent.status_id);
 					

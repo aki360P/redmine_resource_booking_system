@@ -3,7 +3,7 @@ class RrbsBookingsController < ApplicationController
   before_action :find_user, :find_project
 
   def initialize
-    super()    #bodyˆÈŠO‚Íredmine view‚ðŒp³
+    super()    #bodyï¿½ÈŠOï¿½ï¿½redmine viewï¿½ï¿½ï¿½pï¿½ï¿½
     
     if Rails::VERSION::MAJOR < 3
       @base_url = Redmine::Utils::relative_url_root
@@ -13,14 +13,15 @@ class RrbsBookingsController < ApplicationController
   end
 
   def index
-    #Ý’è‚³‚ê‚½ƒe[ƒuƒ‹‚ð“Ç‚Ýž‚Ý
+    #ï¿½Ý’è‚³ï¿½ê‚½ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½Ç‚Ýï¿½ï¿½ï¿½
     @rrbs_setting = RrbsSetting.find_by(project_id: @project.id)
     @rrbs_start_time = CustomField.find_by_id(@rrbs_setting.custom_field_id_start).possible_values
     @rrbs_end_time =  CustomField.find_by_id(@rrbs_setting.custom_field_id_end).possible_values
     aaa = CustomFieldEnumeration.where(active: '1').where(custom_field_id: @rrbs_setting.custom_field_id_room)
     @rrbs_resources = aaa.sort_by{|c| c.position }.collect { |c| [c.name, c.id] }
-    @issue_status_ids = IssueStatus.where(id: [@rrbs_setting.issue_status_id_book, @rrbs_setting.issue_status_id_progress, @rrbs_setting.issue_status_id_complete]).collect { |c| [c.name, c.id] }
-    
+    @issue_status_ids = IssueStatus.where(id: [@rrbs_setting.issue_status_id_book, @rrbs_setting.issue_status_id_progress, @rrbs_setting.issue_status_id_complete, @rrbs_setting.issue_status_id_cancel]).collect { |c| [c.name, c.id] }
+    @rrbs_text =  CustomField.find_by_id(@rrbs_setting.custom_field_id_text).name
+
     @events = Issue.where("tracker_id = ?", @rrbs_setting.tracker_id)
     @events_book = @events.where("status_id = ?", @rrbs_setting.issue_status_id_book)
     @events_progress = @events.where("status_id = ?", @rrbs_setting.issue_status_id_progress)

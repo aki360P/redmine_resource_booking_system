@@ -6,9 +6,11 @@ ja:
   label_rrbs_setting_custom_field_id_room: "リソース"
   label_rrbs_setting_custom_field_id_start: "開始時刻"
   label_rrbs_setting_custom_field_id_end: "終了時刻"
+  label_rrbs_setting_custom_field_id_text: "Textフィールド"
   label_rrbs_issue_status_id_book: "予約中のステータス"
   label_rrbs_issue_status_id_progress: "貸出中のステータス"
   label_rrbs_issue_status_id_complete: "返却済のステータス"
+  label_rrbs_issue_status_id_cancel: "キャンセル(非表示)"
   label_rrbs_footer_message: "注意書き"
   
   
