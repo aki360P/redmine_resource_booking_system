@@ -5,7 +5,7 @@
   z-index: 1000 !important;
 }
 
-.ui-widget-header{ background: none !important; background-color: #EA1D22 !important; color: white; border: none !important; }
+/* .ui-widget-header{ background: none !important; background-color: #EA1D22 !important; color: white; border: none !important; } */
 
 .rrbs_saveModal { display: none; }
 
