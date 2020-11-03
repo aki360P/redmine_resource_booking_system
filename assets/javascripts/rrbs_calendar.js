@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
               var start;
                   start = event[i].start_date + "T" + event[i].custom_fields[eventIndexStart].value + ":00";
               var end;
-                  end = event[i].due_date + "T" + event[i].custom_fields[eventIndexEnd].value + ":00";
+                  end = event[i].due_date + "T" + event[i].custom_fields[eventIndexEnd].value + ":01";
                   
                   
               var event_color = '#1905b2';  //dark blue
@@ -398,8 +398,8 @@ jQuery(document).ready(function($) {
 							 + label_rrbs_subject      + ': ' + data.title + '</br>' 
 							 + label_rrbs_resource     + ': ' + data.resource + '</br>'
 							 + label_rrbs_assigned_to  + ': ' + data.assigned_to + '</br>' 
-							 + label_rrbs_start_time   + ': ' + data.start.toISOString() + '</br>' 
-							 + label_rrbs_end_time     + ': ' + data.end.toISOString() + '</br>'
+							 + label_rrbs_start_time   + ': ' + data.start.toISOString().substr(0,16) + '</br>' 
+							 + label_rrbs_end_time     + ': ' + data.end.toISOString().substr(0,16) + '</br>'
 							 + label_rrbs_issueid      + ': ' + data.id + '</br>'
 							 + label_rrbs_booking_text + ': ' + data.booking_text + '</br>' 
 							 + '</div>';
