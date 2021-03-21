@@ -32,7 +32,10 @@ class RrbsBookingsController < ApplicationController
       @user_is_manager = 1
     end
     
-    @assignable_users = @project.assignable_users.collect { |user| [user.name, user.id] }
+    list1 = [["to me", @user.id]]
+    list2 = @project.assignable_users.collect { |user| [user.name, user.id] }
+    @assignable_users = list1 + list2
+    
     
     @api_key = User.current.api_key
     unless User.current.allowed_to?(:view_issues, @project)
