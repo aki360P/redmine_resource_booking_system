@@ -1,20 +1,7 @@
 <br/>
 <br/>
 
-<div id="rrbs_resource">
-    <%= label_tag("label_rrbs_resource", l(:label_rrbs_resource)) %><br/>
-    <% @rrbs_resources.each do |r| %>
-      <%= check_box_tag "rrbs_resource_checkbox", r[1], false, {:multiple => true } %><%= r[0] %><br/>
-    <% end %>
-    
-    <br/>
-    <br/>
-    
-    <div id="status_name_book"><p><%= l(:label_rrbs_status_name_book) %></p></div>
-    <div id="status_name_progress"><p><%= l(:label_rrbs_status_name_progress) %></p></div>
-    <div id="status_name_complete"><p><%= l(:label_rrbs_status_name_complete) %></p></div>
-    
-</div>
+
 
 
 <script type="text/javascript">
@@ -95,19 +82,39 @@
 
 
 
-
-<% content_for :sidebar do %>
+  <% content_for :sidebar do %>
     <%= render :partial => 'sidebar' %>
-<% end %>
-
-<div id='calendar'></div>
+  <% end %>
 
 
 
+  <div id="rrbs_left">
+    <div id="rrbs_resource">
+      <%= label_tag("label_rrbs_resource", l(:label_rrbs_resource)) %><br/>
+      <% @rrbs_resources.each do |r| %>
+        <%= check_box_tag "rrbs_resource_checkbox", r[1], false, {:multiple => true } %><%= r[0] %><br/>
+      <% end %>
+    </div>
+	<br/>
+	<div id="rrbs_status">
+      <div id="status_name_book"><p><%= l(:label_rrbs_status_name_book) %></p></div>
+      <div id="status_name_progress"><p><%= l(:label_rrbs_status_name_progress) %></p></div>
+      <div id="status_name_complete"><p><%= l(:label_rrbs_status_name_complete) %></p></div>
+	</div>
+  </div>
 
-<div id="footer_message">
-    <%= textilizable @rrbs_setting.footer_message %>
-</div>
+  <div id='rrbs_right'>
+    <div id='calendar'></div>
+    <br/>
+    <div id='footer_message'>
+	  <%= textilizable @rrbs_setting.footer_message %>
+	</div>
+  </div>
+
+
+
+
+
 
 
 <!-- イベント編集画面  -->

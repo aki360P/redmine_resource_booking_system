@@ -115,32 +115,35 @@ div#status_name_book{ color: green; }
 div#status_name_progress{ color: #f2cf01; }
 div#status_name_complete{ color: black; }
 
-div#content { 
-  float: left;
 
-}
   
-div#calendar {
-  float: right;
-  width: 80%;  /* ���v100%�ɂ���ƂȂ����㉺�ɕ�����Ă��܂� */
-  padding-top: 0px; 
-  padding-left: 0px;
-  padding-right: auto;
-  margin-bottom: 0px; /* calendar�̃T�C�Y�Ȃ����傫�� */
-}
 
 
-div#rrbs_resource {
+div#rrbs_left {
   float: left;
   width: 15%;
-  padding-top: 100px;
+}
+div#rrbs_resource {
+  margin-right: 20px;
+  padding-top: 20px;
   padding-left: 20px;
+  height:450px;
+  overflow:auto;
+}
+
+div#rrbs_right {
+  overflow: hidden;
+  padding-right: auto;
+  width: 80%;  
+}
+div#calendar {
+  padding-top: 0px; 
+  padding-left: 0px;
+  margin-bottom: 0px; 
 }
 
 div#footer_message {
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 250px;
-  clear: both;
-  /* line-height: 30px; */
+  padding-left: 20px;
 }
