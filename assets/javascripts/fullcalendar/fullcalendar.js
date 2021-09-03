@@ -12771,7 +12771,7 @@ function populateInstanceComputableOptions(options) {
 
 // Returns moment's internal locale data. If doesn't exist, returns English.
 function getMomentLocaleData(localeCode) {
-	return moment.localeData(localeCode) || moment.localeData('en');
+	return moment.localeData(localeCode) || moment.localeData('ru');
 }
 
 

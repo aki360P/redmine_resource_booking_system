@@ -191,7 +191,8 @@ jQuery(document).ready(function($) {
 				}else{
 					console.log("ajax失敗 %s %s", action, url);
 					console.log(textStatus + ": " + jqXHR.responseText);
-					alert(jqXHR.status + " " + jqXHR.statusText + "\n ajax失敗" + "\n textStatus : " + textStatus + "\n errorThrown : " + errorThrown + "\n responseText : " + jqXHR.responseText);
+					alert('* ' + jqXHR.responseText.slice(11, -2).split(',').map(item => item.slice(1,-1) + '\n').join('* '));
+					/* alert(jqXHR.status + " " + jqXHR.statusText + "\n ajax失敗" + "\n textStatus : " + textStatus + "\n errorThrown : " + errorThrown + "\n responseText : " + jqXHR.responseText);*/
 				}
 			}
 		});
@@ -207,9 +208,14 @@ jQuery(document).ready(function($) {
           
           var booking_date = window.moment($('#booking_date').val(), long_date_format);
           var booking_end_date = window.moment($('#booking_end_date').val(), long_date_format);
-          
+		  console.log("booking_date " + booking_date);
+          console.log("booking_end_date " + booking_end_date);
+
           var start_time = window.moment($('#start_time').val(), 'HH:mm');
           var end_time = window.moment($('#end_time').val(), 'HH:mm');
+		  console.log("start_time " + start_time);
+          console.log("end_time " + start_time);
+
           
           var ajaxData_custom_field_values = {};
               ajaxData_custom_field_values[fieldIdStart] = start_time.format('HH:mm');
@@ -217,8 +223,10 @@ jQuery(document).ready(function($) {
 			  ajaxData_custom_field_values[fieldIdResource] = $('#selected_resource').val();
 			  ajaxData_custom_field_values[fieldIdText] = $('#booking_text').val();
               
-          
-          $('.rrbs_saveModal').dialog('close');
+          if (booking_date == NaN && booking_end_date == NaN && start_time == NaN && end_time == NaN) {
+			console.log('IN');
+			$('.rrbs_saveModal').dialog('close');
+		  } 
           
           //setting the variable for update or create as required
           if ($('#event_id').val() == 0) {
@@ -267,7 +275,7 @@ jQuery(document).ready(function($) {
 				doReload();
 				},
 			
-			error: function(jqXHR, textStatus, errorThrown){
+			error: function(jqXHR, textStatus){
 				if (jqXHR.status == 200){  // なぜか成功200においてもエラー処理になることがある
 					console.log("ajax通信成功 %s %s", action, url);
 					console.dir(jqXHR);
@@ -275,7 +283,12 @@ jQuery(document).ready(function($) {
 				}else{
 					console.log("ajax失敗 %s %s", action, url);
 					console.log(textStatus + ": " + jqXHR.responseText);
-					alert(jqXHR.status + " " + jqXHR.statusText + "\n ajax失敗" + "\n textStatus : " + textStatus + "\n errorThrown : " + errorThrown + "\n responseText : " + jqXHR.responseText);
+					$('#warning_list').addClass('warn');
+					$('#warning_list').append(jqXHR.responseText.slice(11, -2).split(',').map(item => '<li>' + item.slice(1,-1) + '\n' + '</li>').join(''));
+					// alert(jqXHR.status + " " + jqXHR.statusText + "\n ajax失敗" + "\n textStatus : " + textStatus + "\n errorThrown : " + errorThrown + "\n responseText : " + jqXHR.responseText);
+					//alert('* ' + jqXHR.responseText.slice(11, -2).split(',').map(item => item.slice(1,-1) + '\n').join('* '));
+					// console.log(jqXHR.responseText);
+					//alert(/*"textStatus : " + textStatus + "\n errorThrown : " + errorThrown + "\n responseText : " + */jqXHR.responseText);
 				}
 			}
 		});
@@ -457,7 +470,6 @@ jQuery(document).ready(function($) {
 
 					$('#selected_issue_status').val(calEvent.status_id);
 					
-					
 					//$('#delete_booking').hide();  // 台帳管理の安全性から当面隠す
 					
                   $('#subject').focus();                
@@ -513,6 +525,8 @@ jQuery(document).ready(function($) {
                       show : 'blind',
                       hide : 'explode'
                   });
+				  $('#warning_list').removeClass('warn');
+				  $('#warning_list').empty();
                   $('.rrbs_saveModal').dialog('open');
                   
                   //$('#delete_booking').hide();

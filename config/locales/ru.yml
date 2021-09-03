@@ -1,0 +1,38 @@
+# Russian strings go here for Rails i18n
+ru:
+  label_rrbs_booking: "Бронирование"
+  
+  label_rrbs_setting_tracker_id: "Трекер"
+  label_rrbs_setting_custom_field_id_room: "Переговорная"
+  label_rrbs_setting_custom_field_id_start: "Начало встречи"
+  label_rrbs_setting_custom_field_id_end: "Окончание встречи"
+  label_rrbs_setting_custom_field_id_text: "Описание"
+  label_rrbs_issue_status_id_book: "Статус бронирования"
+  label_rrbs_issue_status_id_progress: "Статус процесса"
+  label_rrbs_issue_status_id_complete: "Статус завершения"
+  label_rrbs_issue_status_id_cancel: "Статус отмены"
+  label_rrbs_footer_message: "Сообщение снизу"
+  
+  
+  
+  label_rrbs_issueid: "ID задачи"
+  label_rrbs_subject: "Тема"
+  label_rrbs_resource: "Переговорная"
+  label_rrbs_start_date: "Дата бронирования"
+  label_rrbs_start_time: "Время бронирования"
+  label_rrbs_end_date: "Дата окончания"
+  label_rrbs_end_time: "Время окончания"
+  label_rrbs_assigned_to: "Назначена"
+  label_rrbs_set_status: "Статус"
+  label_rrbs_save: "Сохранить"
+  label_rrbs_delete: "Удалить"
+
+  label_rrbs_update_event: "Обновить бронирование"
+  label_rrbs_create_event: "Создать бронирование"
+  
+  label_rrbs_status_name_book: "Бронирование"
+  label_rrbs_status_name_progress: "В процессе"
+  label_rrbs_status_name_complete: "Завершено"
+  label_rrbs_progress_index: "Статус - В процессе"
+  label_rrbs_book_index: "Статус - Бронь"
+  

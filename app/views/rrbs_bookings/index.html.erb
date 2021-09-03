@@ -69,7 +69,7 @@
 <%= javascript_include_tag 'fullcalendar/lib/jquery-ui.min.js',:plugin => 'redmine_resource_booking_system' %>
 <%= javascript_include_tag 'fullcalendar/lib/jquery-ui.custom.min.js',:plugin => 'redmine_resource_booking_system' %>
 <%= javascript_include_tag 'fullcalendar/fullcalendar.min.js',:plugin => 'redmine_resource_booking_system' %>
-<%= javascript_include_tag 'fullcalendar/locale-all.js',:plugin => 'redmine_resource_booking_system' %>
+<%= javascript_include_tag 'fullcalendar/locale/ru.js',:plugin => 'redmine_resource_booking_system' %>
 <%= javascript_include_tag 'jquery.qtip/jquery.qtip.min.js' ,:plugin => 'redmine_resource_booking_system'%>
 <%= javascript_include_tag 'jquery.alerts/jquery.alerts.js' ,:plugin => 'redmine_resource_booking_system'%>
 
@@ -120,16 +120,17 @@
 <!-- イベント編集画面  -->
 <div class="rrbs_saveModal">
 	<div class="formLayout">
+	<ul id="warning_list"></ul>
 			<%= label_tag(:subject, l(:label_rrbs_subject)) %><%= text_field_tag :subject, "aaa", :maxlength => 255 %><br/>
 	
 	    <div id="selected_resource_container">
 	        <%= label_tag("selected_resource", l(:label_rrbs_resource)) %><%= select_tag "selected_resource", options_for_select(@rrbs_resources) %><br/>
 	    </div>
-            <%= label_tag("booking_date", l(:label_rrbs_start_date)) %><%= text_field_tag("booking_date") %><br/>
+            <%= label_tag("booking_date", l(:label_rrbs_start_date)) %><%= date_field_tag("booking_date") %><br/>
             <%= label_tag("start_time", l(:label_rrbs_start_time)) %><%= select_tag "start_time", options_for_select(@rrbs_start_time) %><br/>
             
             
-	        <%= label_tag("booking_end_date", l(:label_rrbs_end_date)) %><%= text_field_tag("booking_end_date") %><br/>
+	        <%= label_tag("booking_end_date", l(:label_rrbs_end_date)) %><%= date_field_tag("booking_end_date") %><br/>
 	        <%= label_tag("end_time", l(:label_rrbs_end_time)) %><%= select_tag "end_time", options_for_select(@rrbs_end_time) %><br/>
 
 	    	<%= label_tag(:assigned_to, l(:label_rrbs_assigned_to)) %> <%= select_tag "selected_assigned_to", options_for_select(@assignable_users, @user) %><br/>
@@ -150,5 +151,3 @@
     <%= hidden_field_tag :event_id, '' %>
     <%= hidden_field_tag :issue_id, @issue_id %>
 </div>
-
-
