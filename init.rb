@@ -1,10 +1,10 @@
-require 'rrbs_projects_helper_patch'
+require File.expand_path('../lib/rrbs_projects_helper_patch', __FILE__)
 
 Redmine::Plugin.register :redmine_resource_booking_system do
   name 'Redmine Resource Booking System plugin'
   author 'QBurst, Tobias Droste, Akinori Iwasaki'
   description 'Provides a resource booking system with javascript fullcalendar'
-  version '1.0.1'
+  version '1.1.0'
   #requires_redmine version_or_higher: '2.5.0'
   url 'https://github.com/aki360P/redmine_resource_booking_system'
   

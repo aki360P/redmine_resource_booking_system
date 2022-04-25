@@ -1,7 +1,6 @@
 require 'projects_helper'
 
-module RrbsSettings
-  module ProjectsHelperPatch
+module RrbsProjectsHelperPatch
     extend ActiveSupport::Concern
 
     def project_settings_tabs
@@ -21,7 +20,6 @@ module RrbsSettings
 
       action
     end
-  end
 end
 
-ProjectsController.helper(RrbsSettings::ProjectsHelperPatch)
+ProjectsController.helper(RrbsProjectsHelperPatch)
