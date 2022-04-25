@@ -8,7 +8,7 @@ class AddColumn < ActiveRecord::CompatibleLegacyMigration.migration_class
   end
 
   def self.down
-    remove_dolumn :rrbs_settings, :custom_field_id_text
-    remove_dolumn :rrbs_settings, :custom_field_id_cancel
+    remove_column :rrbs_settings, :custom_field_id_text
+    remove_column :rrbs_settings, :issue_status_id_cancel
   end
 end
