@@ -60,23 +60,22 @@
 
 
 
-<!-- library 読み込み  -->
+<!-- library 読み込み -->
 <%= stylesheet_link_tag 'fullcalendar/fullcalendar.min.css',:plugin => 'redmine_resource_booking_system' %>
 <%= stylesheet_link_tag 'fullcalendar/fullcalendar.print.css',:plugin => 'redmine_resource_booking_system',:media => 'print' %>
-<%= stylesheet_link_tag 'fullcalendar/cupertino/jquery-ui.min.css',:plugin => 'redmine_resource_booking_system' %>
 <%= javascript_include_tag 'fullcalendar/lib/moment.min.js',:plugin => 'redmine_resource_booking_system' %>
-<%= javascript_include_tag 'fullcalendar/lib/jquery.min.js',:plugin => 'redmine_resource_booking_system' %>
-<%= javascript_include_tag 'fullcalendar/lib/jquery-ui.min.js',:plugin => 'redmine_resource_booking_system' %>
-<%= javascript_include_tag 'fullcalendar/lib/jquery-ui.custom.min.js',:plugin => 'redmine_resource_booking_system' %>
 <%= javascript_include_tag 'fullcalendar/fullcalendar.min.js',:plugin => 'redmine_resource_booking_system' %>
 <%= javascript_include_tag 'fullcalendar/locale-all.js',:plugin => 'redmine_resource_booking_system' %>
+<!--
 <%= javascript_include_tag 'jquery.qtip/jquery.qtip.min.js' ,:plugin => 'redmine_resource_booking_system'%>
 <%= javascript_include_tag 'jquery.alerts/jquery.alerts.js' ,:plugin => 'redmine_resource_booking_system'%>
+-->
 
-
-<!-- 自作assets 読み込み  -->
+<!-- 自作assets 読み込み -->
 <%= stylesheet_link_tag 'rrbs_style.css',:plugin => 'redmine_resource_booking_system' %>
+<!--
 <%= javascript_include_tag 'setup.js',:plugin => 'redmine_resource_booking_system'%>
+-->
 <%= javascript_include_tag 'rrbs_calendar.js',:plugin => 'redmine_resource_booking_system' %>
 
 
@@ -85,8 +84,6 @@
   <% content_for :sidebar do %>
     <%= render :partial => 'sidebar' %>
   <% end %>
-
-
 
   <div id="rrbs_left">
     <div id="rrbs_resource">
@@ -110,6 +107,7 @@
 	  <%= textilizable @rrbs_setting.footer_message %>
 	</div>
   </div>
+
 
 
 
