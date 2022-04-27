@@ -27,22 +27,22 @@
       <p>
         <%= label_tag('settings[custom_field_id_room]', l(:label_rrbs_setting_custom_field_id_room)) %>
         <%= select_tag('settings[custom_field_id_room]', options_for_select(custom_fields_issues.collect{|c| [c.name, c.id]}, @rrbs_setting['custom_field_id_room'])) %>
-        &nbsp This item must be a Customfield(Issue) Key-value-list.
+        &nbsp This item must be a type of Key-value-list Issue-Customfield.
       </p>
       <p>
         <%= label_tag('settings[custom_field_id_start]', l(:label_rrbs_setting_custom_field_id_start)) %>
         <%= select_tag('settings[custom_field_id_start]', options_for_select(custom_fields_issues.collect{|c| [c.name, c.id]}, @rrbs_setting['custom_field_id_start'])) %>
-        &nbsp This item must be a Customfield(Issue) List. ex: 09:00 09:15 09:30 (please fill in 0, 9:00 not allowed)
+        &nbsp This item must be a type of List Issue-Customfield. ex: 09:00 09:15 09:30 (please fill in 0, 9:00 not allowed)
       </p>
       <p>
         <%= label_tag('settings[custom_field_id_end]', l(:label_rrbs_setting_custom_field_id_end)) %>
         <%= select_tag('settings[custom_field_id_end]', options_for_select(custom_fields_issues.collect{|c| [c.name, c.id]}, @rrbs_setting['custom_field_id_end'])) %>
-        &nbsp This item must be a Customfield(Issue) List. ex: 09:00 09:15 09:30 (please fill in 0, 9:00 not allowed)
+        &nbsp This item must be a type of List Issue-Customfield. ex: 09:00 09:15 09:30 (please fill in 0, 9:00 not allowed)
       </p>
       <p>
         <%= label_tag('settings[custom_field_id_text', l(:label_rrbs_setting_custom_field_id_text)) %>
-        <%= select_tag('settings[custom_field_id_text]', options_for_select(custom_fields_issues.collect{|c| [c.name, c.id]}, @rrbs_setting['custom_field_id_text'])) %>
-        &nbsp This item must be a Customfield(Issue) Text.
+        <%= select_tag('settings[custom_field_id_text]', options_for_select(custom_fields_issues.collect{|c| [c.name, c.id]}, @rrbs_setting['custom_field_id_text']),include_blank: true) %>
+        &nbsp [Optional] This item must be a type of Text Issue-Customfield.
       </p>
     
     <% status_ids = IssueStatus.all %>

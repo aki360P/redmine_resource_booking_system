@@ -124,9 +124,9 @@
 	        <%= label_tag("end_time", l(:label_rrbs_end_time)) %><%= select_tag "end_time", options_for_select(@rrbs_end_time) %><br/>
 
 	    	<%= label_tag(:assigned_to, l(:label_rrbs_assigned_to)) %> <%= select_tag "selected_assigned_to", options_for_select(@assignable_users, @user) %><br/>
-
-			<%= label_tag(:booking_text, @rrbs_text) %> <%= text_field_tag("booking_text") %><br/>
-		
+            <% if @rrbs_text.present? %>
+			  <%= label_tag(:booking_text, @rrbs_text) %> <%= text_field_tag("booking_text") %><br/>
+		    <% end %>
 		<div id="selected_issue_status_container">
 	        <%= label_tag("selected_issue_status", l(:label_rrbs_set_status)) %><%= select_tag "selected_issue_status", options_for_select(@issue_status_ids) %><br/>
 	    </div>

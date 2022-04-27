@@ -47,33 +47,62 @@ jQuery(document).ready(function($) {
           }
           
           for (var i = 0; i < count; i++) {
-              if (event[i].custom_fields == undefined) {
-                  continue;   
-              }
+			try{  //avoid "Cannot read properties of undefined (reading 'name')"
+              if (event[i].custom_fields == undefined) { continue; }
+
+			  var resource_id;
+              var start_time;
+			  var end_time;
+			  var text;
+
+			  //read custom_fields value
               for (var j = 0; j < event[i].custom_fields.length; j++)
               {
-                  if (event[i].custom_fields[j]["id"] == fieldIdResource)
-                      eventIndexResource = j;
-                  if (event[i].custom_fields[j]["id"] == fieldIdStart)
-                      eventIndexStart = j;
-                  if (event[i].custom_fields[j]["id"] == fieldIdEnd)
-					  eventIndexEnd = j;
-				  if (event[i].custom_fields[j]["id"] == fieldIdText)
-                      eventIndexText = j;
+                  if (event[i].custom_fields[j]["id"] == fieldIdResource){
+					resource_id = event[i].custom_fields[j].value;
+				  }
+                  if (event[i].custom_fields[j]["id"] == fieldIdStart){
+					start_time = event[i].custom_fields[j].value;
+				  }
+                  if (event[i].custom_fields[j]["id"] == fieldIdEnd){
+					end_time = event[i].custom_fields[j].value;
+				  }
+				  if (event[i].custom_fields[j]["id"] == fieldIdText){
+					text = event[i].custom_fields[j].value;
+				  }
               }
               
-              var resource_id;
-                  resource_id = event[i].custom_fields[eventIndexResource].value;
-              var resource;
-                  for (var k = 0; k < rrbs_resources.length; k++){
-                      if (rrbs_resources[k][1] == resource_id) resource = rrbs_resources[k][0];
-                      }
-                            
+			  //check value and format event object
+			  var resource;
+			  for (var k = 0; k < rrbs_resources.length; k++){
+				if (rrbs_resources[k][1] == resource_id) {
+					resource = rrbs_resources[k][0];
+					continue;
+				}
+			  }
+
               var start;
-                  start = event[i].start_date + "T" + event[i].custom_fields[eventIndexStart].value + ":00";
+			  if (start_time != "" && start_time != undefined) {
+				start = event[i].start_date + "T" + start_time + ":00";
+			  } else {
+				start = event[i].start_date + "T00:00:00";
+			  }
+
               var end;
-                  end = event[i].due_date + "T" + event[i].custom_fields[eventIndexEnd].value + ":01";
-                  
+			  if (end_time != "" && end_time != undefined) {
+				end = event[i].due_date + "T" + end_time + ":00";
+                
+				if ((moment(end) - moment(start)) < 0){
+				  end = start.slice(0,-3) + ":01";
+				}
+			  } else {
+				end = event[i].due_date + "T23:59:00";
+			  }
+              
+			  if (fieldIdText == ''){
+				text = '';
+			  }
+
                   
               var event_color = '#1905b2';  //dark blue
               
@@ -92,11 +121,15 @@ jQuery(document).ready(function($) {
 							assigned_to: event[i].assigned_to.name,
 							assigned_to_id: event[i].assigned_to.id,
 							id: event[i].id,
-							booking_text: event[i].custom_fields[eventIndexText].value,
+							booking_text: text,
 							color: event_color,
 							status_id: event[i].status.id
 				});
 			  }
+			} catch(error) {
+			  console.log("buildEventsJSON error :" + error);
+			  console.log(event[i]);
+			}
           }
           return true;
       };
@@ -215,9 +248,12 @@ jQuery(document).ready(function($) {
               ajaxData_custom_field_values[fieldIdStart] = start_time.format('HH:mm');
               ajaxData_custom_field_values[fieldIdEnd] = end_time.format('HH:mm');
 			  ajaxData_custom_field_values[fieldIdResource] = $('#selected_resource').val();
-			  ajaxData_custom_field_values[fieldIdText] = $('#booking_text').val();
-              
+			  if (fieldIdText != ''){
+			    ajaxData_custom_field_values[fieldIdText] = $('#booking_text').val();
+			  }
           
+
+
           $('.rrbs_saveModal').dialog('close');
           
           //setting the variable for update or create as required
@@ -401,8 +437,10 @@ jQuery(document).ready(function($) {
 							 + label_rrbs_start_time   + ': ' + data.start.toISOString().substr(0,16) + '</br>' 
 							 + label_rrbs_end_time     + ': ' + data.end.toISOString().substr(0,16) + '</br>'
 							 + label_rrbs_issueid      + ': ' + data.id + '</br>'
-							 + label_rrbs_booking_text + ': ' + data.booking_text + '</br>' 
-							 + '</div>';
+						if (fieldIdText != ''){
+							tooltip = tooltip + label_rrbs_booking_text + ': ' + data.booking_text + '</br>' 
+						}
+						tooltip = tooltip + '</div>';
 				$("body").append(tooltip);
 				$(this).mouseover(function (e) {
 					$(this).css('z-index', 10000);
