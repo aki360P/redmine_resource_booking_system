@@ -205,11 +205,11 @@ jQuery(document).ready(function($) {
       $('#save_booking').click(function() {
           var event_id = $('#event_id').val();
           
-          var booking_date = window.moment($('#booking_date').val(), long_date_format);
+          var booking_start_date = window.moment($('#booking_start_date').val(), long_date_format);
           var booking_end_date = window.moment($('#booking_end_date').val(), long_date_format);
           
-          var start_time = window.moment($('#start_time').val(), 'HH:mm');
-          var end_time = window.moment($('#end_time').val(), 'HH:mm');
+          var start_time = window.moment($('#start_time').val(), 'HH:mm'); 
+		  var end_time = window.moment($('#end_time').val(), 'HH:mm');
           
           var ajaxData_custom_field_values = {};
               ajaxData_custom_field_values[fieldIdStart] = start_time.format('HH:mm');
@@ -229,7 +229,7 @@ jQuery(document).ready(function($) {
 	          	project_id: project_id,
 	          	tracker_id: tracker_id,
 	          	subject: $('#subject').val(),
-	          	start_date: booking_date.format('YYYY-MM-DD'),
+	          	start_date: booking_start_date.format('YYYY-MM-DD'),
 	          	due_date: booking_end_date.format('YYYY-MM-DD'),
 	          	custom_field_values: ajaxData_custom_field_values,
 	          	assigned_to_id: $('#selected_assigned_to').val(),
@@ -245,7 +245,7 @@ jQuery(document).ready(function($) {
 	          	project: {id: project_id },
 	          	tracker: {id: tracker_id },
 	          	subject: $('#subject').val(),
-	          	start_date: booking_date.format('YYYY-MM-DD'),
+	          	start_date: booking_start_date.format('YYYY-MM-DD'),
 	          	due_date: booking_end_date.format('YYYY-MM-DD'),
 	          	custom_field_values: ajaxData_custom_field_values,
 	          	assigned_to_id: $('#selected_assigned_to').val(),
@@ -446,7 +446,7 @@ jQuery(document).ready(function($) {
                   });
                   $('.rrbs_saveModal').dialog();
                   $('#selected_resource').val(calEvent.resource_id);
-                  $('#booking_date').val(calEvent.start.format(long_date_format));
+                  $('#booking_start_date').val(calEvent.start.format(long_date_format));
                   $('#booking_end_date').val(calEvent.end.format(long_date_format));
                   $('#subject').val(calEvent.title);
                   $('#event_id').val(calEvent.id);
@@ -495,7 +495,7 @@ jQuery(document).ready(function($) {
                   $('#event_id').val(0);
                   $('#selected_resource').val($('#rrbs_resource_checkbox:checked').val());
                   
-                  $('#booking_date').val(date.format(long_date_format));
+                  $('#booking_start_date').val(date.format(long_date_format));
                   $('#booking_end_date').val(date.format(long_date_format));
                   $('#subject').val("");
                   $('#start_time').val(date.format('HH:mm'));
