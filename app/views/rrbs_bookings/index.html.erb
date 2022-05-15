@@ -82,7 +82,7 @@
     <div id="rrbs_resource">
       <%= label_tag("label_rrbs_resource", l(:label_rrbs_resource)) %><br/>
       <% @rrbs_resources.each do |r| %>
-        <%= check_box_tag "rrbs_resource_checkbox", r[1], false, {:multiple => true } %><%= r[0] %><br/>
+        <%= check_box_tag "rrbs_resource_checkbox", r[1], false, {:id => "rrbs_resource_checkbox_#{r[1]}", :multiple => true } %><%= label_tag "rrbs_resource_checkbox_#{r[1]}", r[0] %><br/>
       <% end %>
     </div>
 	<br/>

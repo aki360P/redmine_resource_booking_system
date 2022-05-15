@@ -124,11 +124,12 @@ div#rrbs_left {
   width: 15%;
 }
 div#rrbs_resource {
-  margin-right: 20px;
-  padding-top: 20px;
-  padding-left: 20px;
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
   height:450px;
   overflow:auto;
+  white-space: nowrap;
 }
 
 div#rrbs_right {
@@ -146,4 +147,8 @@ div#footer_message {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
+}
+
+label, input[type='checkbox'] {
+  cursor: pointer;
 }

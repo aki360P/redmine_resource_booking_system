@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
 	//選択ボタンでリソースが変更された場合
 	$('#rrbs_resource').change(function() {
 		var r_selected = [];
-		$('#rrbs_resource_checkbox:checked').each(function(){
+		$('input[name="rrbs_resource_checkbox"]:checked').each(function(){
 		r_selected.push($(this).val());
 		});
 		document.cookie = 'r_selected=[' + r_selected + ']';
@@ -531,7 +531,7 @@ jQuery(document).ready(function($) {
                   
                   
                   $('#event_id').val(0);
-                  $('#selected_resource').val($('#rrbs_resource_checkbox:checked').val());
+                  $('#selected_resource').val($('input[name="rrbs_resource_checkbox"]:checked').val());
                   
                   $('#booking_start_date').val(date.format(long_date_format));
                   $('#booking_end_date').val(date.format(long_date_format));
