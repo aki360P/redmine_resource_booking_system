@@ -25,7 +25,7 @@ class RrbsBookingsController < ApplicationController
       @rrbs_text =  CustomField.find_by_id(@rrbs_setting.custom_field_id_text).name
     end
 
-    @events = Issue.where("tracker_id = ?", @rrbs_setting.tracker_id)
+    @events = Issue.where("project_id = ?", @project.id).where("tracker_id = ?", @rrbs_setting.tracker_id)
     @events_book = @events.where("status_id = ?", @rrbs_setting.issue_status_id_book)
     @events_progress = @events.where("status_id = ?", @rrbs_setting.issue_status_id_progress)
     @events_progress = @events_progress.where("project_id = ?", @rrbs_setting.project_id)
