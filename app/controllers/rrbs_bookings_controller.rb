@@ -1,5 +1,5 @@
 class RrbsBookingsController < ApplicationController
-  unloadable
+  #unloadable
   before_action :find_user, :find_project
 
   def initialize
